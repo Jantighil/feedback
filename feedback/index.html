@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Phishnatomy Feedback</title>
+  <link rel="stylesheet" href="/style/style.css">
+  <!-- Include DOMPurify without integrity check -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.3.3/purify.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h1>Phishnatomy Feedback</h1>
+    <form id="feedback-form">
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username" required>
+      
+      <label for="rating">Rating:</label>
+      <div class="star-rating">
+        <input type="radio" name="rating" value="5" id="5">
+        <label for="5">&#9733;</label>
+        <input type="radio" name="rating" value="4" id="4">
+        <label for="4">&#9733;</label>
+        <input type="radio" name="rating" value="3" id="3">
+        <label for="3">&#9733;</label>
+        <input type="radio" name="rating" value="2" id="2">
+        <label for="2">&#9733;</label>
+        <input type="radio" name="rating" value="1" id="1">
+        <label for="1">&#9733;</label>
+      </div>
+      
+      <label for="feedback">Feedback:</label>
+      <textarea id="feedback" name="feedback" required></textarea>
+      
+      <button type="submit">Submit</button>
+    </form>
+    
+    <h2>User Feedback</h2>
+    <div id="feedback-list"></div>
+  </div>
+
+  <script src="/static/script.js"></script>
+</body>
+</html>
+
+
+
