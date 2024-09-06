@@ -6,21 +6,19 @@ const helmet = require('helmet');
 const path = require('path');
 
 const app = express();
-const PORT = 3000;
 
-// PostgreSQL Pool
+// PostgreSQL Pool using Supabase connection string
 const pool = new Pool({
-  user: 'john',
-  host: 'localhost',
-  database: 'phishnatomy',
-  password: '1234',
-  port: 5432,
+  connectionString: 'postgresql://postgres.ensyvveevljxfdkdgcvo:07034984914Bread@aws-0-eu-central-1.pooler.supabase.com:6543/postgres',
+  ssl: {
+    rejectUnauthorized: false
+  }
 });
 
 app.use(cors());
 app.use(bodyParser.json());
 app.use(helmet());
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, 'public')));
 
 // API Routes
 app.post('/api/feedback', async (req, res) => {
@@ -54,6 +52,7 @@ app.get('/', (req, res) => {
 });
 
 // Start Server
+const PORT = process.env.PORT || 3300;
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
