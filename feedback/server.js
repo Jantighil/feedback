@@ -6,16 +6,21 @@ const helmet = require('helmet');
 const path = require('path');
 
 const app = express();
+const PORT = process.env.PORT || 3300;
 
-// PostgreSQL Pool using Supabase connection string
+// PostgreSQL Pool
 const pool = new Pool({
-  connectionString: 'postgresql://postgres.ensyvveevljxfdkdgcvo:07034984914Bread@aws-0-eu-central-1.pooler.supabase.com:6543/postgres',
-  ssl: {
-    rejectUnauthorized: false
-  }
+  connectionString: process.env.DATABASE_URL
 });
 
-app.use(cors());
+// Configure CORS
+const corsOptions = {
+  origin: 'https://userfeedback1.vercel.app', // Allow requests from this origin
+  methods: 'GET,POST',
+  allowedHeaders: 'Content-Type',
+};
+
+app.use(cors(corsOptions));
 app.use(bodyParser.json());
 app.use(helmet());
 app.use(express.static(path.join(__dirname, 'public')));
@@ -52,7 +57,6 @@ app.get('/', (req, res) => {
 });
 
 // Start Server
-const PORT = process.env.PORT || 3300;
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
