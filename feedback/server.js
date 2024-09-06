@@ -10,12 +10,12 @@ const PORT = process.env.PORT || 3300;
 
 // PostgreSQL Pool
 const pool = new Pool({
-  connectionString: process.env.DATABASE_URL
+  connectionString: process.env.DATABASE_URL // Ensure this is set
 });
 
 // CORS Configuration
 const corsOptions = {
-  origin: 'https://userfeedback1.vercel.app', // Allow requests from this origin
+  origin: 'https://userfeedback1.vercel.app', // Allow this origin
   methods: 'GET,POST',
   allowedHeaders: 'Content-Type',
 };
