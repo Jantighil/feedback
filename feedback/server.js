@@ -13,7 +13,7 @@ const pool = new Pool({
   connectionString: process.env.DATABASE_URL
 });
 
-// Configure CORS
+// CORS Configuration
 const corsOptions = {
   origin: 'https://userfeedback1.vercel.app', // Allow requests from this origin
   methods: 'GET,POST',
