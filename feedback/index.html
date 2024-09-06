@@ -39,7 +39,7 @@
     <div id="feedback-list"></div>
   </div>
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
+  document.addEventListener('DOMContentLoaded', function() {
   const form = document.getElementById('feedback-form');
 
   form.addEventListener('submit', async function(event) {
@@ -51,7 +51,7 @@
       const feedback = DOMPurify.sanitize(document.getElementById('feedback').value);
 
       try {
-        const response = await fetch('https://feedback-eq90.onrender.com/api/feedback', {  // Updated URL
+        const response = await fetch('https://feedback-eq90.onrender.com/api/feedback', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -75,7 +75,7 @@
 
   async function fetchFeedback() {
     try {
-      const response = await fetch('https://feedback-eq90.onrender.com/api/feedback');  // Updated URL
+      const response = await fetch('https://feedback-eq90.onrender.com/api/feedback');
       if (!response.ok) {
         console.error('Failed to fetch feedback');
         return;
@@ -109,7 +109,6 @@
 
   fetchFeedback();
 });
-
   </script>
 
   <script src="/static/script.js"></script>
